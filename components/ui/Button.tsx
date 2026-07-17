@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef } from "react";
+import { forwardRef, type ReactNode } from "react";
 import { motion, type HTMLMotionProps } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -8,7 +8,8 @@ import { cn } from "@/lib/utils";
 type ButtonVariant = "primary" | "secondary";
 type ButtonSize = "md" | "lg";
 
-interface ButtonProps extends HTMLMotionProps<"button"> {
+interface ButtonProps extends Omit<HTMLMotionProps<"button">, "children"> {
+  children?: ReactNode;
   variant?: ButtonVariant;
   size?: ButtonSize;
   showArrow?: boolean;
