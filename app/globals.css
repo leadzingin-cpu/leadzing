@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Color tokens — see tailwind.config.ts for the Tailwind-facing mirror */
+  --color-primary: #12e1f2;
+  --color-primary-light: #5feefa;
+  --color-primary-dark: #0bb8c7;
+  --color-secondary: #ff8c42;
+
+  --neutral-100: #ffffff;
+  --neutral-200: #f7f8fa;
+  --neutral-300: #e7e9ec;
+  --neutral-400: #b0b0b5;
+  --neutral-500: #6b6e76;
+  --neutral-700: #1e1f21;
+  --neutral-900: #0a0b0c;
+
+  /* Motion tokens */
+  --motion-fast: 200ms;
+  --motion-medium: 300ms;
+  --motion-slow: 500ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout tokens */
+  --radius-base: 16px;
+  --navbar-height: 76px;
+  --container-max: 75rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto; /* Lenis takes over smooth scrolling on desktop */
+  overflow-x: hidden;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--neutral-100);
+  color: var(--neutral-900);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--neutral-900);
+}
+
+/* Respect reduced-motion preference globally as a hard floor.
+   Component-level motion also checks usePrefersReducedMotion(),
+   this is the CSS-level backstop for anything not driven by JS. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible keyboard focus ring, brand-colored, never suppressed */
+:focus-visible {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
