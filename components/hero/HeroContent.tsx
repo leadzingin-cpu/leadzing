@@ -67,7 +67,13 @@ export function HeroContent() {
         <Button variant="primary" size="lg" onClick={openModal}>
           Book Discovery Call
         </Button>
-        <Button variant="secondary" size="lg">
+        <Button
+          variant="secondary"
+          size="lg"
+          onClick={() =>
+            document.getElementById("capabilities")?.scrollIntoView({ behavior: "smooth", block: "start" })
+          }
+        >
           View Services
         </Button>
       </motion.div>
