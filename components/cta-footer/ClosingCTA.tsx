@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { useBookingModal } from "@/components/booking/BookingModalContext";
-import { TrustRow } from "./TrustRow";
 import { MascotShowcase } from "./MascotShowcase";
 import {
   ctaHeadlineLineVariants,
@@ -92,7 +91,7 @@ export function ClosingCTA() {
           </motion.div>
         </motion.div>
 
-        <TrustRow />
+    
       </div>
 
       <MascotShowcase />
