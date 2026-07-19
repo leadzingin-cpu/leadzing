@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Mail, Instagram, MessageCircle, Youtube } from "lucide-react";
+import { Mail, Instagram, MessageCircle, MailIcon } from "lucide-react";
 
 export interface FooterLink {
   label: string;
@@ -46,5 +46,5 @@ export interface SocialLink {
 export const SOCIAL_LINKS: SocialLink[] = [
   { icon: Instagram, label: "Instagram", href: "https://instagram.com/leadzing.in" },
   { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/919874743024" },
-  { icon: Youtube, label: "YouTube", href: "https://youtube.com/@leadzing" },
+  { icon: MailIcon, label: "Email", href: "mailto:hello@leadzing.in" },
 ];
