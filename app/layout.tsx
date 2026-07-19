@@ -21,15 +21,83 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "LeadZing — Building Brands People Remember",
-  description:
-    "LeadZing is a premium creative marketing agency helping ambitious businesses grow through brand strategy, content, websites and creative storytelling.",
   metadataBase: new URL("https://leadzing.in"),
+
+  title: {
+    default: "LeadZing | Branding, Social Media & Website Development Agency"
+    template: "%s | LeadZing",
+  },
+
+  description:
+    "LeadZing is a premium brand marketing agency helping ambitious businesses grow through branding, social media management, content production, website development, AI systems, and creative storytelling.",
+
+  keywords: [
+    "LeadZing",
+    "Brand Marketing Agency",
+    "Creative Agency",
+    "Branding Agency",
+    "Social Media Marketing",
+    "Social Media Management",
+    "Content Production",
+    "Website Development",
+    "Web Design",
+    "Marketing Agency India",
+    "Brand Strategy",
+    "Content Marketing",
+    "Video Production",
+    "AI Automation",
+    "Digital Marketing",
+  ],
+
+  authors: [{ name: "LeadZing" }],
+
+  creator: "LeadZing",
+
+  publisher: "LeadZing",
+
+  applicationName: "LeadZing",
+
+  category: "Marketing",
+
+  alternates: {
+    canonical: "https://leadzing.in",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+
   openGraph: {
-    title: "LeadZing — Building Brands People Remember",
-    description:
-      "We transform ambitious businesses into unforgettable brands through strategy, content, websites and creative storytelling.",
-    type: "website",
+  title: "LeadZing | Brand Marketing Agency",
+  description:
+    "We build unforgettable brands through strategy, content, websites, AI systems and creative storytelling.",
+
+  url: "https://leadzing.in",
+  siteName: "LeadZing",
+  locale: "en_IN",
+  type: "website",
+},
+
+twitter: {
+  card: "summary_large_image",
+  title: "LeadZing | Brand Marketing Agency",
+  description:
+    "Helping ambitious businesses grow through branding, content, websites and AI systems.",
+},
+
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
 };
 
