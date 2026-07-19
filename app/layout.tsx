@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import StructuredData from "@/components/StructuredData";
 import { Geist, Inter } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { Navbar } from "@/components/layout/Navbar";
@@ -109,6 +110,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geist.variable} ${inter.variable}`}>
       <body className="font-body">
+        <StructuredData />
+
         <BookingModalProvider>
           <AboutModalProvider>
             <SmoothScrollProvider>
