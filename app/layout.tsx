@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://leadzing.in"),
 
   title: {
-    default: "LeadZing | Branding, Social Media & Website Development Agency"
-    template: "%s | LeadZing",
-  },
+  default: "LeadZing | Branding, Social Media & Website Development Agency",
+  template: "%s | LeadZing",
+},
 
   description:
     "LeadZing is a premium brand marketing agency helping ambitious businesses grow through branding, social media management, content production, website development, AI systems, and creative storytelling.",
