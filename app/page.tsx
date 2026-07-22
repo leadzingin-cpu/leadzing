@@ -3,6 +3,7 @@ import { InvisibleProblem } from "@/components/sections/InvisibleProblem";
 import { TheSolution } from "@/components/sections/TheSolution";
 import { Capabilities } from "@/components/sections/Capabilities";
 import { TheProcess } from "@/components/sections/TheProcess";
+import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export default function HomePage() {
@@ -13,6 +14,7 @@ export default function HomePage() {
       <TheSolution />
       <Capabilities />
       <TheProcess />
+      <FAQ />
       <FinalCTA />
     </>
   );

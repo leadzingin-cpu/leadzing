@@ -12,6 +12,75 @@ scattered across ten separate root-level files.
 
 ---
 
+## Maintenance Update — Footer, About & Final CTA Cleanup
+
+Small surgical edits, no redesign. Six files touched (one deleted).
+
+### 1. Removed the "Trusted by 120+ businesses" trust row
+- `components/cta-footer/ClosingCTA.tsx` — removed the `<TrustRow />` render and its import (it was the last element in the left column's flex stack, so the layout closes up naturally with no leftover gap; both CTA buttons are unaffected). Also corrected a stale doc comment that still mentioned it.
+- `components/cta-footer/TrustRow.tsx` — **deleted**. Confirmed zero remaining references anywhere in the project before removing it.
+
+### 2. Replaced the YouTube social icon with Email
+- `components/cta-footer/footerData.ts` — `SOCIAL_LINKS`'s third entry changed from `{ icon: Youtube, label: "YouTube", href: "https://youtube.com/@leadzing" }` to `{ icon: Mail, label: "Email", href: "mailto:hello@leadzing.in" }`. Removed the now-unused `Youtube` import. `SocialIconButton.tsx` itself is fully data-driven and untouched — same size, border, hover, spacing, transition, exactly as before, just rendering a different icon from the data.
+
+### 3. Footer navigation updated
+- `components/cta-footer/footerData.ts` — `FOOTER_NAV_LINKS` changed to exactly `Home, Capabilities, Process, About, FAQ` (Problem, Solution, Contact removed). `FAQ` uses `href="#faq"`, matching the FAQ section's existing `id`.
+
+### 4. Footer services list updated
+- `components/cta-footer/footerData.ts` — `FOOTER_SERVICE_LINKS` replaced with exactly `Brand Strategy, Social Media Management, Content Production, Website Development, AI Automation, Performance Marketing` (Creative Direction removed; note this list also renames "Web Development" to "Website Development" and adds two new entries, per the exact list requested).
+
+### 5. About modal — removed the "100+ Businesses Reached" card
+- `components/about/aboutData.ts` — removed the `reach` entry from `LEFT_INFO_CARDS`, and the now-unused `Users` icon import. `AboutLeftPanel.tsx` renders this array via a plain `.map()` in a `flex flex-col` stack, so the remaining two cards close up automatically — no layout changes needed there.
+
+### Verified
+- `tsc --noEmit`: zero errors.
+- `eslint . --ext .ts,.tsx --max-warnings=0`: zero errors/warnings.
+- `next build`: same sandbox limitation as every prior entry in this changelog (no network access here for Next's native SWC binary) — not a code defect; `tsc`/lint are clean.
+- No file was renamed, moved, or reorganized. No config file (`package.json`, `tailwind.config.ts`, `tsconfig.json`, `.eslintrc.json`, `next.config.js`) was touched. No dependency was added or updated.
+
+---
+
+## Bug fix — "View Services" button
+
+`components/hero/HeroContent.tsx`: the Hero's "View Services" button had
+no `onClick` handler at all. Added one, reusing the exact
+`scrollIntoView({ behavior: "smooth" })` pattern already used by the
+Final CTA's "See Our Process" button, targeting `#capabilities` (which
+already had its `id` set). One file changed; no UI/styling change.
+
+---
+
+## Phase 7 — FAQ Section + Navigation Update
+
+New section, inserted between Process and Final CTA, plus a navigation
+menu update. No other section was modified.
+
+### New files (7)
+- `components/sections/FAQ.tsx` — the section itself
+- `components/faq/faqData.ts` — the six Q&A entries
+- `components/faq/FAQLeftPanel.tsx` — eyebrow, headline, copy, Zingy card
+- `components/faq/FAQAccordion.tsx` — manages which of the six cards is open
+- `components/faq/FAQAccordionItem.tsx` — a single card (+/- toggle, cyan border+glow, height/opacity animation)
+- `components/faq/FAQBottomCTA.tsx` — the glass CTA card, reusing the existing `Button` + `useBookingModal()`
+- `animations/faqAnimations.ts` — this section's motion variants (400-500ms accordion timing, per spec)
+
+### Modified files (2)
+- `app/page.tsx` — one import + one line, rendering `<FAQ />` between `<TheProcess />` and `<FinalCTA />`.
+- `components/layout/Navbar.tsx` — `NAV_LINKS` updated to `Home, Capabilities, Process, About, Contact, FAQ` (Problem and Solution removed, FAQ added), exactly as specified. No styling, spacing, animation, or interaction logic in the Navbar itself was touched — same component, same behavior, just a different array of six links instead of seven. "FAQ" is a plain anchor link (`#faq`) like Process/Capabilities/Contact — it doesn't open a modal, so no click-interception logic was needed for it (unlike "About").
+
+### Notable decisions
+- **First FAQ item opens by default** (matching the reference image), unlike the Process accordion which starts fully collapsed — a deliberate difference, not an inconsistency: an FAQ block reads better with one example answer already visible.
+- **`#FAFAF8` ("Warm White") was not used.** It doesn't exist anywhere in the current design system (the closest existing token is `surface.subtle`, `#F7F8FA` — a different value) and the same brief explicitly says not to introduce new colors. Used the existing white/glass backgrounds already used by every neighboring section instead.
+- **Zingy card** reuses the existing `zingy-process.png` asset (hand raised, holding/pointing at a device), cropped to upper-body-only via CSS object-position inside a glass card frame — no new mascot artwork was generated; this is the same official, unaltered render used elsewhere on the site, just framed differently.
+- **`Problem` and `Solution` were removed from the nav only** — both sections still exist on the page exactly as before; they're simply no longer directly linked from the nav bar, per explicit instruction.
+
+### Verified
+- `tsc --noEmit`: zero errors.
+- `eslint . --ext .ts,.tsx --max-warnings=0`: zero errors/warnings.
+- `next build`: could not complete in this sandbox specifically (no network access to fetch Next's native SWC binary — the same environment limitation noted in the prior architecture-audit entry below, not a code defect). `tsc` and lint, which catch the overwhelming majority of real build failures, both pass clean.
+
+---
+
 ## [Unreleased] — Architecture Audit & Production Cleanup
 
 A full repository audit, performed with zero changes to design, layout,

@@ -133,7 +133,7 @@ export function MascotShowcase() {
         transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
       >
         <Image
-          src="/assets/zingy/zingy-footer.png"
+          src="/assets/zingy/zingy-hero.png"
           alt="Zingy, the LeadZing mascot, presenting the LeadZing ecosystem"
           fill
           sizes="(max-width: 768px) 60vw, 372px"

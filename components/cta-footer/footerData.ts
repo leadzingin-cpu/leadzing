@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Mail, Instagram, MessageCircle, MailIcon } from "lucide-react";
+import { Mail, Instagram, MessageCircle } from "lucide-react";
 
 export interface FooterLink {
   label: string;
@@ -8,20 +8,19 @@ export interface FooterLink {
 
 export const FOOTER_NAV_LINKS: FooterLink[] = [
   { label: "Home", href: "#home" },
-  { label: "Problem", href: "#problem" },
-  { label: "Solution", href: "#solution" },
   { label: "Capabilities", href: "#capabilities" },
   { label: "Process", href: "#process" },
   { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 export const FOOTER_SERVICE_LINKS: FooterLink[] = [
   { label: "Brand Strategy", href: "#capabilities" },
-  { label: "Content Production", href: "#capabilities" },
   { label: "Social Media Management", href: "#capabilities" },
-  { label: "Web Development", href: "#capabilities" },
-  { label: "Creative Direction", href: "#capabilities" },
+  { label: "Content Production", href: "#capabilities" },
+  { label: "Website Development", href: "#capabilities" },
+  { label: "AI Automation", href: "#capabilities" },
+  { label: "Performance Marketing", href: "#capabilities" },
 ];
 
 export interface ContactRow {
@@ -42,9 +41,9 @@ export interface SocialLink {
   href: string;
 }
 
-/** Instagram, WhatsApp, YouTube only — LinkedIn intentionally excluded per brief. */
+/** Instagram, WhatsApp, Email — LinkedIn intentionally excluded per brief. */
 export const SOCIAL_LINKS: SocialLink[] = [
   { icon: Instagram, label: "Instagram", href: "https://instagram.com/leadzing.in" },
   { icon: MessageCircle, label: "WhatsApp", href: "https://wa.me/919874743024" },
-  { icon: MailIcon, label: "Email", href: "mailto:hello@leadzing.in" },
+  { icon: Mail, label: "Email", href: "mailto:hello@leadzing.in" },
 ];

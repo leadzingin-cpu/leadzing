@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Users, Zap, Star, Target, Sparkles, Handshake, Rocket } from "lucide-react";
+import { Zap, Star, Target, Sparkles, Handshake, Rocket } from "lucide-react";
 
 export interface InfoCardData {
   id: string;
@@ -9,7 +9,6 @@ export interface InfoCardData {
 }
 
 export const LEFT_INFO_CARDS: InfoCardData[] = [
-  { id: "reach", icon: Users, heading: "100+", subheading: "Businesses Reached" },
   { id: "services", icon: Zap, heading: "5 Services", subheading: "One Complete Growth System" },
   { id: "craft", icon: Star, heading: "Strategy \u2022 Content \u2022 Web", subheading: "Built Together" },
 ];

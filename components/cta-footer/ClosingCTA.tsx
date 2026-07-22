@@ -16,7 +16,7 @@ const HEADLINE_LINES = ["Let's Build Something", "People Remember."];
 
 /**
  * Part 1 of Phase 6 — the site's final, hero-scale call to action.
- * Left: eyebrow, headline, copy, primary/secondary CTAs, trust row.
+ * Left: eyebrow, headline, copy, primary/secondary CTAs.
  * Right: the mascot showcase. Same left-aligned-header-beside-visual
  * composition as Phase 5, closing the loop on the page's rhythm
  * rather than introducing a new one.
@@ -90,8 +90,6 @@ export function ClosingCTA() {
             </Button>
           </motion.div>
         </motion.div>
-
-    
       </div>
 
       <MascotShowcase />
