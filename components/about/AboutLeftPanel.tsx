@@ -14,7 +14,7 @@ import { aboutStaggerContainer, aboutStaggerItem } from "@/animations/aboutModal
  */
 export function AboutLeftPanel() {
   return (
-    <div className="flex w-full shrink-0 flex-col items-center overflow-y-auto border-b border-ink/10 bg-white px-8 py-10 text-center md:w-[38%] md:border-b-0 md:border-r md:px-8 md:py-12">
+    <div className="flex w-full shrink-0 flex-col items-center overflow-visible border-b border-ink/10 bg-white px-8 py-10 text-center md:w-[38%] md:overflow-y-auto md:border-b-0 md:border-r md:px-8 md:py-12">
       <Image
         src="/assets/logo/logo-icon.png"
         alt="LeadZing"

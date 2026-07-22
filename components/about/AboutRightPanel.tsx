@@ -11,7 +11,7 @@ import { aboutStaggerContainer, aboutStaggerItem } from "@/animations/aboutModal
 
 export function AboutRightPanel() {
   return (
-    <div className="min-h-0 flex-1 overflow-y-auto px-6 py-8 sm:px-10 sm:py-10">
+    <div className="shrink-0 overflow-visible px-6 py-8 sm:px-10 sm:py-10 md:min-h-0 md:flex-1 md:overflow-y-auto">
       {/* Section 1 — About LeadZing */}
       <section>
         <h2 id="about-modal-heading" className="font-display text-2xl font-black text-ink sm:text-3xl">

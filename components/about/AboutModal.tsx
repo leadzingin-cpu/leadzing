@@ -60,7 +60,7 @@ export function AboutModal() {
             aria-modal="true"
             aria-labelledby="about-modal-heading"
             variants={aboutModalVariants}
-            className="relative flex h-[92dvh] max-h-[92dvh] w-full flex-col overflow-hidden rounded-t-cta border border-white/60 bg-white shadow-high md:h-auto md:max-h-[85vh] md:w-full md:max-w-[1040px] md:flex-row md:rounded-cta lg:max-h-[88vh]"
+            className="relative flex h-[92dvh] max-h-[92dvh] w-full flex-col overflow-x-hidden overflow-y-auto rounded-t-cta border border-white/60 bg-white shadow-high md:h-auto md:max-h-[85vh] md:w-full md:max-w-[1040px] md:flex-row md:overflow-hidden md:rounded-cta lg:max-h-[88vh]"
             style={{ boxShadow: "0 32px 80px rgba(10,11,12,0.28), 0 0 0 1px rgba(255,255,255,0.4), 0 0 64px rgba(18,225,242,0.10)" }}
           >
             <div className="absolute right-4 top-4 z-30 sm:right-6 sm:top-6">
