@@ -78,30 +78,28 @@ export function FAQAccordionItem({ item, isOpen, onToggle }: FAQAccordionItemPro
         </span>
       </button>
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            id={panelId}
-            role="region"
-            aria-labelledby={buttonId}
-            key="content"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={faqAnswerTransition}
-            className="overflow-hidden"
-          >
-            <motion.p
-              initial={{ y: 10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ ...faqAnswerTransition, delay: 0.05 }}
-              className="px-5 pb-5 pl-[4.25rem] font-body text-sm leading-relaxed text-ink-500 sm:px-6 sm:pb-6 sm:pl-[4.75rem]"
-            >
-              {item.answer}
-            </motion.p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/*
+        Always mounted (never conditionally unmounted) so every answer
+        exists in the server-rendered HTML — not just whichever item is
+        open — matching the FAQPage JSON-LD in FAQStructuredData and
+        keeping the content crawlable by search/AI engines regardless
+        of interaction state. Visibility is purely a height/opacity
+        animation, same visual result as the previous AnimatePresence
+        mount/unmount version.
+      */}
+      <motion.div
+        id={panelId}
+        role="region"
+        aria-labelledby={buttonId}
+        initial={false}
+        animate={isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
+        transition={faqAnswerTransition}
+        className="overflow-hidden"
+      >
+        <p className="px-5 pb-5 pl-[4.25rem] font-body text-sm leading-relaxed text-ink-500 sm:px-6 sm:pb-6 sm:pl-[4.75rem]">
+          {item.answer}
+        </p>
+      </motion.div>
     </motion.div>
   );
 }

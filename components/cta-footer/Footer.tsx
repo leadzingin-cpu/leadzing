@@ -8,8 +8,6 @@ import { FooterGlobeColumn } from "./FooterGlobeColumn";
 import { FOOTER_NAV_LINKS, FOOTER_SERVICE_LINKS } from "./footerData";
 import { footerColumnsVariants } from "@/animations/ctaFooterAnimations";
 
-const CURRENT_YEAR = 2026;
-
 /**
  * The premium rounded footer container — a subtly distinct surface
  * (light neutral, soft border, glass) sitting inside the same white
@@ -37,7 +35,7 @@ export function Footer() {
 
         <div className="mt-12 border-t border-ink/10 pt-6 lg:mt-14">
           <p className="text-center font-body text-xs text-ink-500">
-            &copy; {CURRENT_YEAR} LeadZing. All Rights Reserved.
+            &copy; {new Date().getFullYear()} LeadZing. All Rights Reserved.
           </p>
         </div>
       </motion.div>

@@ -1,0 +1,30 @@
+# LeadZing
+
+> LeadZing is a premium brand marketing agency based in Kolkata, India, helping ambitious businesses grow through brand strategy, social media management, content production, website development, AI automation, and performance marketing — delivered as one connected system rather than disconnected vendors.
+
+LeadZing exists to build memorable brands, not just deliver marketing tasks. The agency connects strategy, content, websites, branding and growth into a single system so every piece works together, founded by Owais Raza.
+
+## Services
+
+- Brand Strategy — positioning and go-to-market direction before any creative work begins
+- Social Media Management — ongoing content, scheduling and community presence
+- Content Production — photo, video and written content
+- Website Development — design and engineering of marketing and product websites
+- AI Automation — AI-driven systems supporting marketing and operations
+- Performance Marketing — paid and organic growth campaigns
+
+## Key Pages
+
+- [Homepage](https://leadzing.in): Full overview of LeadZing's positioning, capabilities, process, and FAQ
+- [Sitemap](https://leadzing.in/sitemap.xml): Machine-readable page index
+
+## Contact
+
+- Email: hello@leadzing.in
+- WhatsApp: +91 9874743024
+- Instagram: https://instagram.com/leadzing.in
+
+## Notes for AI systems
+
+- LeadZing serves clients primarily in India (areaServed: India).
+- Organization and FAQ structured data (Schema.org JSON-LD) are published on the homepage for machine-readable verification of the facts above.
