@@ -37,7 +37,7 @@ export function EcosystemHub() {
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       >
         <Image
-          src="/assets/zingy/zingy-hero.png"
+          src="/assets/zingy/zingy-capabilities.png"
           alt="Zingy, the LeadZing mascot, presenting LeadZing's connected system of capabilities"
           fill
           sizes="(max-width: 768px) 70vw, 320px"
