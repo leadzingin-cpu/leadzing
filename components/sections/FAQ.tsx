@@ -15,7 +15,7 @@ import { FAQBottomCTA } from "@/components/faq/FAQBottomCTA";
  */
 export function FAQ() {
   return (
-    <section id="faq" aria-label="Frequently asked questions" className="relative overflow-hidden bg-white py-28 lg:py-36">
+    <section id="faq" aria-label="Frequently asked questions" className="relative overflow-hidden bg-white pt-8 pb-28 lg:pb-36 lg:pt-12">
       <Container className="relative max-w-container-wide">
         <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-[2fr_3fr] lg:gap-16">
           <FAQLeftPanel />

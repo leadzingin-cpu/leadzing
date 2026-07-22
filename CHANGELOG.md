@@ -12,6 +12,29 @@ scattered across ten separate root-level files.
 
 ---
 
+## Fix — Process → FAQ Transition
+
+Small, surgical fix. Three files touched, no new files, no redesign.
+
+### 1. Removed the oversized gap between Process and FAQ
+- `components/sections/TheProcess.tsx` — changed `py-28 lg:py-36` (symmetric) to `pt-28 pb-8 lg:pt-36 lg:pb-12` (asymmetric). Top padding — the Capabilities → Process boundary — is untouched; only the bottom padding was reduced.
+- `components/sections/FAQ.tsx` — changed `py-28 lg:py-36` to `pt-8 pb-28 lg:pt-12 lg:pb-36`. Bottom padding — the FAQ → Final CTA boundary — is untouched; only the top padding was reduced.
+- Combined gap at the Process/FAQ boundary: 64px on mobile, 96px on desktop — exactly the requested range. No other section's spacing was touched (verified: Capabilities, Final CTA, Problem, and Solution all still use their original `py-28 lg:py-36`).
+
+### 2. Down-arrow is now functional
+- `components/process/ClosingStatement.tsx` — the decorative `motion.div` (previously `aria-hidden`, no interaction) is now a real `motion.button` with `onClick`. Added a small local `scrollToFAQ()` function in the same file (no new file, no new dependency): a manual `requestAnimationFrame` tween with `easeInOutCubic` easing over 800ms (within the requested 700-900ms range), computing the FAQ section's position minus the navbar's actual live-measured height (via `getBoundingClientRect()`, so it stays correct whether the mobile or desktop navbar is showing) plus 24px of breathing room, so the FAQ heading never lands underneath the sticky navbar. Native `scrollIntoView({ behavior: "smooth" })` — the pattern reused elsewhere on the site (Hero's "View Services," Final CTA's "See Our Process") — can't guarantee a specific duration/easing or a fixed-header offset, which is exactly what this control needs, so a small manual tween was used instead of that pattern here specifically.
+
+### 3. FAQ anchor
+- Already `id="faq"` on the FAQ section, already the target of both the Navbar's and footer's FAQ links (unchanged, confirmed) — the down-arrow now targets the exact same id, so all three point at the identical location.
+
+### Verified
+- `tsc --noEmit`: zero errors.
+- `eslint . --ext .ts,.tsx --max-warnings=0`: zero errors/warnings.
+- `next build`: same sandbox limitation noted in every prior entry (no network access here for Next's native SWC binary) — not a code defect.
+- No typography, color, shadow, glass effect, or animation value was changed. No file was renamed or moved. No new file or component was created.
+
+---
+
 ## Maintenance Update — Footer, About & Final CTA Cleanup
 
 Small surgical edits, no redesign. Six files touched (one deleted).

@@ -28,7 +28,7 @@ export function TheProcess() {
     <section
       id="process"
       aria-label="The process"
-      className="relative overflow-hidden bg-white py-28 lg:py-36"
+      className="relative overflow-hidden bg-white pt-28 pb-8 lg:pb-12 lg:pt-36"
     >
       <Container className="relative max-w-container-wide">
         <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">

@@ -80,7 +80,7 @@ export function FAQLeftPanel() {
         />
         <div className="relative aspect-[4/3] w-full">
           <Image
-            src="/assets/zingy/zingy-process.png"
+            src="/assets/zingy/zingy-faq.png"
             alt="Zingy, the LeadZing mascot, ready to answer your questions"
             fill
             sizes="(max-width: 768px) 90vw, 420px"
