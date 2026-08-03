@@ -37,6 +37,18 @@ Fixed typo in homepage `<title>`: `Poeple` → `People`. Was live in SERPs and b
 
 **Verification performed:** production build passes · both JSON-LD blocks parse · heading hierarchy unchanged (1 h1 / 8 h2 / 25 h3) · zero console errors · metadata confirmed in rendered HTML on `localhost:3001`.
 
+### Deploy 3 — `1b3c41b` (live, verified)
+`lang="en"` → `lang="en-IN"`; added the six working documents.
+
+### Deploy 4 — `95b75c2` (live, verified)
+- **GA4 booking funnel tracking** (`lib/analytics.ts` + `BookingModal` + `BookingModalContext`). Four events: `booking_modal_open`, `booking_step_advance`, `generate_lead`, `booking_submit_failed`. Helper is fail-safe (never throws, no-ops without gtag) and sends no PII. Two events verified firing on real clicks.
+- **LCP fix:** removed `priority` from `AboutLeftPanel`'s logo. It sits in the always-mounted-but-hidden About modal and was emitting a `<link rel="preload">` at w=256/384 competing with `zingy-hero.png`, the real LCP element. Image preloads 3 → 2, **confirmed live in production**.
+
+### Deploy 5 — `3b1d9e4` + `3e1e398`
+- **Fixed broken footer "About" link.** It pointed at `#about`, which does not exist (About lives in a modal). Navbar already intercepted this; the footer did not. Verified: clicking now flips the dialog's `aria-hidden` and leaves `location.hash` empty.
+- Meta description 168 → 143 chars so it stops truncating in SERPs.
+- Added `Permissions-Policy` header.
+
 ---
 
 ## 3. 🔴 CRITICAL — awaiting owner decision
@@ -88,7 +100,9 @@ Do **not** promote these figures into `aggregateRating`/`Review` schema under an
 2. Add `BreadcrumbList` schema once a second URL exists.
 3. Image audit: `zingy-capabilities.PNG` / `zingy-solution.PNG` use uppercase `.PNG` extensions — verify no case-sensitivity issues; check file weights.
 4. Convert footer service links from six anchors→`#capabilities` to real URLs once service pages exist.
-5. Add CSP + Permissions-Policy headers.
+5. ~~Add Permissions-Policy~~ **done** (`3e1e398`). CSP still outstanding — deliberately deferred: a wrong CSP breaks the site, and this environment cannot visually verify (see below).
+6. Rename `zingy-capabilities.PNG` / `zingy-solution.PNG` to lowercase. Cosmetic only — references are consistent, so nothing is broken today.
+7. Investigate 187 kB First Load JS. Framer Motion dominates; many concurrent `whileInView` + infinite-loop animations are the likely INP risk. Needs CrUX field data (blocked on GSC) to prioritise properly.
 
 ### ⚠️ Verification limits in this environment
 The browser pane runs with `document.hidden === true`, so `requestAnimationFrame` is paused and **all framer-motion animations stall**. Consequences:
