@@ -44,8 +44,11 @@ export const metadata: Metadata = {
     template: "%s | LeadZing",
   },
 
+  // ~143 chars — stays inside Google's ~155-160 char desktop truncation
+  // point, so the full sentence renders in the SERP rather than cutting
+  // off mid-clause.
   description:
-    "LeadZing is a brand marketing agency in Kolkata connecting brand strategy, social media management, content production, websites and AI automation into one growth system.",
+    "LeadZing is a brand marketing agency in Kolkata. We connect strategy, social media, content, websites and AI automation into one growth system.",
 
   // `keywords` intentionally omitted — Google has ignored the meta keywords
   // tag since 2009 and Bing treats it as a spam signal. Nothing to gain.
