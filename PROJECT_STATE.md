@@ -84,10 +84,19 @@ Do **not** promote these figures into `aggregateRating`/`Review` schema under an
 ## 5. Next immediate actions
 
 **Agent (unblocked, can proceed):**
-1. Build `/about` page from existing `aboutData.ts` + About modal content — content already exists, just trapped in a modal Google can't index. No fabrication required.
+1. ~~Build `/about` from modal content~~ — **retracted.** The About copy *is* server-rendered and indexed (`AboutModal` is deliberately never unmounted). A `/about` page would duplicate homepage content. See `CONTENT_PLAN.md` §1.1 for the corrected, smaller rationale.
 2. Add `BreadcrumbList` schema once a second URL exists.
 3. Image audit: `zingy-capabilities.PNG` / `zingy-solution.PNG` use uppercase `.PNG` extensions — verify no case-sensitivity issues; check file weights.
 4. Convert footer service links from six anchors→`#capabilities` to real URLs once service pages exist.
+5. Add CSP + Permissions-Policy headers.
+
+### ⚠️ Verification limits in this environment
+The browser pane runs with `document.hidden === true`, so `requestAnimationFrame` is paused and **all framer-motion animations stall**. Consequences:
+- Any flow gated behind an animation completing (notably `AnimatePresence mode="wait"` in `BookingModal`) will appear stuck. **This is a test artifact, not a product bug** — confirmed by measuring 0 rAF frames/sec.
+- React state changes and analytics events fire normally and *can* be verified.
+- Screenshots are unavailable for the same reason.
+
+Do not diagnose animation-dependent behaviour from this environment.
 
 **Owner (blocking):**
 1. Decide on §3.1 metrics.

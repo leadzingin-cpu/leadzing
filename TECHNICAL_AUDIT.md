@@ -112,7 +112,7 @@ Status key: ✅ pass · ⚠️ needs work · 🔴 critical · ⬜ blocked
 | 2 | Canonical → redirecting URL (www split) | 🔴 | Owner (Vercel) | 30 sec |
 | 3 | One indexable URL | 🔴 | Agent + owner content | Weeks |
 | 4 | No GA4 conversion events | 🔴 | Agent | 1 hr |
-| 5 | About content trapped in modal | ⚠️ | Agent | 1 day |
+| 5 | ~~About content trapped in modal~~ **retracted — content IS server-rendered** | ✅ | — | — |
 | 6 | Footer: 6 anchors → same `#capabilities` | ⚠️ | Agent (after #3) | 15 min |
 | 7 | Uppercase `.PNG` extensions | ⚠️ | Agent | 10 min |
 | 8 | `lang="en"` → `lang="en-IN"` | ⚠️ | Agent | 1 min |

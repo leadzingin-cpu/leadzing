@@ -40,9 +40,20 @@ Everything below is a **structural hypothesis based on service lines and market*
 
 ## Phase 1 — Unblocked, no new content required
 
-### 1.1 `/about` — **highest priority, zero fabrication risk**
+### 1.1 `/about` — **lower priority than first assessed**
 
-`components/about/` already contains real founder content, core values, and mission copy. It renders **only inside a modal**, which Google cannot index as a page.
+⚠️ **Corrected 2026-08-03.** An earlier draft of this plan claimed the About content was "trapped in a modal Google cannot index." **That was wrong.** `AboutModal` is deliberately kept mounted in the DOM (never conditionally unmounted), and all of it — founder story, mission, values, vision quote — is present in the server-rendered HTML. Verified by grepping the live page source.
+
+The developer's comment in `AboutModal.tsx` explaining this is accurate, and the decision was a good one.
+
+**What this changes:** a `/about` page would *duplicate* content already indexed on the homepage. That's a self-inflicted duplicate-content problem, not a win.
+
+**Remaining genuine value of `/about`** (real, but smaller):
+- A dedicated URL that external sites can link to — Clutch profiles, LinkedIn, PR mentions and directory listings all expect an About/team URL
+- Somewhere to host `AboutPage` + `Person` schema on its own canonical
+- Removes About copy from the homepage, reducing topical dilution there
+
+**If built, it must not simply clone the modal.** Either move the content (removing it from the homepage modal) or expand it substantially — founder background, credentials, team, ways of working. Publishing the same ~400 words at two URLs is worse than leaving it as is.
 
 Existing material available:
 - Founder credit: Owais Raza

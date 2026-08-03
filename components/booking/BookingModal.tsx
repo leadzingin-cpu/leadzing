@@ -13,6 +13,7 @@ import { ConfirmStep } from "./ConfirmStep";
 import { SuccessScreen } from "./SuccessScreen";
 import { EMPTY_BOOKING_FORM, type BookingFormData } from "./bookingData";
 import { submitBooking } from "@/lib/bookingApi";
+import { trackEvent, BookingEvent } from "@/lib/analytics";
 import { backdropVariants, modalVariants, stepVariants } from "@/animations/bookingModalAnimations";
 
 type WizardStep = 1 | 2 | 3 | "success";
@@ -92,6 +93,13 @@ export function BookingModal() {
   const goTo = (next: WizardStep, dir: 1 | -1) => {
     setDirection(dir);
     setStep(next);
+
+    // Forward moves only — this is what makes per-step drop-off visible
+    // in GA4. The "success" transition is intentionally excluded; it's
+    // already reported as `generate_lead` in handleConfirm.
+    if (dir === 1 && next !== "success") {
+      trackEvent(BookingEvent.StepAdvance, { step: next });
+    }
   };
 
   const handleFormChange: <K extends keyof BookingFormData>(field: K, value: BookingFormData[K]) => void = (
@@ -127,10 +135,22 @@ export function BookingModal() {
         goals: formData.message,
       });
 
+      // Fires on confirmed backend success only, so the GA4 conversion
+      // count matches rows actually written to the sheet. Carries no
+      // form data — GA4 must not receive names, emails or phone numbers.
+      trackEvent(BookingEvent.Submitted, { method: "booking_modal" });
+
       if (!isMountedRef.current) return;
       goTo("success", 1);
     } catch (err) {
       isSubmittingRef.current = false;
+
+      // Surfaces silent failures — a spike here means bookings are being
+      // lost, which no other signal on the site would reveal.
+      trackEvent(BookingEvent.Failed, {
+        reason: err instanceof Error ? err.message : "unknown",
+      });
+
       if (!isMountedRef.current) return;
       setSubmitError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     } finally {

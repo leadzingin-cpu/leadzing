@@ -21,7 +21,14 @@ export function AboutLeftPanel() {
         width={160}
         height={160}
         className="h-28 w-28 sm:h-32 sm:w-32"
-        priority
+        sizes="128px"
+        // Deliberately NOT `priority`. This panel lives inside the About
+        // modal, which is always mounted in the DOM (for crawlability) but
+        // invisible until opened. `priority` emitted a <link rel="preload">
+        // for this logo at w=256/384 on every page load, competing with the
+        // hero image — the actual LCP element — for early bandwidth.
+        // Loading it lazily costs nothing: by the time anyone opens the
+        // modal, there has been ample time to fetch a 128px logo.
       />
 
       <h2 className="mt-5 font-display text-2xl font-bold tracking-tight text-ink">LeadZing</h2>

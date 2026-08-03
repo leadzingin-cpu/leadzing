@@ -2,6 +2,7 @@
 
 import { createContext, useCallback, useContext, useMemo, useState } from "react";
 import { BookingModal } from "./BookingModal";
+import { trackEvent, BookingEvent } from "@/lib/analytics";
 
 interface BookingModalContextValue {
   isOpen: boolean;
@@ -22,7 +23,13 @@ const BookingModalContext = createContext<BookingModalContextValue | null>(null)
 export function BookingModalProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const openModal = useCallback(() => setIsOpen(true), []);
+  const openModal = useCallback(() => {
+    // Top of the funnel — every "Book Discovery Call" press, from any
+    // CTA on the page. Paired with `generate_lead`, this gives the
+    // booking completion rate, which nothing currently measures.
+    trackEvent(BookingEvent.ModalOpen);
+    setIsOpen(true);
+  }, []);
   const closeModal = useCallback(() => setIsOpen(false), []);
 
   const value = useMemo(() => ({ isOpen, openModal, closeModal }), [isOpen, openModal, closeModal]);
