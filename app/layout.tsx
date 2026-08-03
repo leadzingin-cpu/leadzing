@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
   title: {
-    default: "LeadZing | Building Brands Poeple Remember",
+    default: "LeadZing | Building Brands People Remember",
     template: "%s | LeadZing",
   },
 
