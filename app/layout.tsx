@@ -34,31 +34,21 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
+  // Keyword-led rather than tagline-led: the brand line "Building Brands
+  // People Remember" already owns the <h1>, where it does its job. A title
+  // tag's job is matching the query and earning the click — for a site with
+  // no rankings yet, "brand marketing agency in Kolkata" is the phrase
+  // people actually search. Brand stays as the suffix, per convention.
   title: {
-    default: "LeadZing | Building Brands People Remember",
+    default: "Brand Marketing Agency in Kolkata | LeadZing",
     template: "%s | LeadZing",
   },
 
   description:
-    "LeadZing combines branding, brand strategy, social media management, content production, website development, and AI automation to build brands people remember.",
+    "LeadZing is a brand marketing agency in Kolkata connecting brand strategy, social media management, content production, websites and AI automation into one growth system.",
 
-  keywords: [
-    "LeadZing",
-    "Brand Marketing Agency",
-    "Creative Agency",
-    "Branding Agency",
-    "Social Media Marketing",
-    "Social Media Management",
-    "Content Production",
-    "Website Development",
-    "Web Design",
-    "Marketing Agency India",
-    "Brand Strategy",
-    "Content Marketing",
-    "Video Production",
-    "AI Automation",
-    "Digital Marketing",
-  ],
+  // `keywords` intentionally omitted — Google has ignored the meta keywords
+  // tag since 2009 and Bing treats it as a spam signal. Nothing to gain.
 
   authors: [{ name: "LeadZing", url: SITE_URL }],
   creator: "LeadZing",

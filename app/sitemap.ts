@@ -4,7 +4,7 @@ import { MetadataRoute } from "next";
 // using `new Date()` at build time would signal a content change on
 // every deploy regardless of whether anything actually changed,
 // which wastes crawl-budget trust with search engines.
-const LAST_MODIFIED = "2026-07-22";
+const LAST_MODIFIED = "2026-08-03";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://leadzing.in";
