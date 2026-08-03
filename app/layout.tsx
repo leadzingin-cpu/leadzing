@@ -101,7 +101,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${geist.variable} ${inter.variable}`}>
+    <html lang="en-IN" className={`${geist.variable} ${inter.variable}`}>
       <body className="font-body">
         <StructuredData />
 
